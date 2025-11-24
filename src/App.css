@@ -5,9 +5,14 @@ body {
   padding: 0;
 }
 
-#logo-image {
-  width: 30px;
-  margin-right: 10px;
+h1 {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* spacing between image + text */
 }
 
-/* Add your own custom styles here */
+/* shrink the books image */
+#logo-image {
+  width: 100px;
+  height: auto;
+}

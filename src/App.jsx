@@ -4,7 +4,7 @@ import BookInfo from "./pages/bookinfo.jsx";
 import Login from "./auth/Login.jsx";
 import Register from "./auth/Register.jsx";
 import AccountPage from "./pages/AccountPage.jsx";
-
+import "./App.css";
 import NavBar from "./components/NavBar";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -49,22 +49,6 @@ export default function App() {
           <img id="logo-image" src="books.png" />
           Library App
         </h1>
-
-        <p>
-          Complete the React components needed to allow users to browse a
-          library catalog, check out books, review their account, and return
-          books that they've finished reading.
-        </p>
-
-        <p>
-          You may need to use some state in this top-level component in other
-          components that need to know if a user has logged in or not.
-        </p>
-
-        <p>
-          Don't forget to set up React Router to navigate between the different
-          views of your single page application!
-        </p>
       </div>
 
       {/* 🟦 NAVBAR — shows Login/Register or Logout/Account */}

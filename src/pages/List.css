@@ -2,3 +2,41 @@
   width: 200px;
   height: 200px;
 }
+
+/* Container grid */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+/* Each book card */
+.book-card {
+  border: 1px solid #ddd;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Book images */
+.book-card img {
+  width: 20%;
+  height: 30%;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+/* Title */
+.book-card h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
