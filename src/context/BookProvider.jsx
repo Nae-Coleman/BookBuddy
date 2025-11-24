@@ -12,6 +12,7 @@ export default function BookProvider({ children }) {
   );
   const [user, setUser] = useState(null);
 
+  // Load all books
   useEffect(() => {
     async function fetchBooks() {
       try {
@@ -24,6 +25,7 @@ export default function BookProvider({ children }) {
     fetchBooks();
   }, []);
 
+  // Load a single book
   const loadBook = async (id) => {
     setBook({});
     try {
@@ -34,15 +36,14 @@ export default function BookProvider({ children }) {
     }
   };
 
+  // AUTHENTICATE the user via token
   const authenticate = async () => {
     try {
-      // save token from localStorage
       const savedToken = window.localStorage.getItem("token");
       if (!savedToken) return;
 
       setToken(savedToken);
 
-      // GET user info with token
       const response = await fetch(
         "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/me",
         {
@@ -52,10 +53,6 @@ export default function BookProvider({ children }) {
         }
       );
 
-      useEffect(() => {
-        authenticate();
-      }, []);
-
       const data = await response.json();
       setUser(data);
     } catch (err) {
@@ -63,8 +60,32 @@ export default function BookProvider({ children }) {
     }
   };
 
+  // AUTO-AUTHENTICATE on page load
+  useEffect(() => {
+    authenticate();
+  }, []);
+
+  // LOGOUT FUNCTION
+  const logout = () => {
+    window.localStorage.removeItem("token");
+    setToken("");
+    setUser(null);
+  };
+
   return (
-    <BookContext.Provider value={{ books, book, loadBook, setBooks, setBook }}>
+    <BookContext.Provider
+      value={{
+        books,
+        book,
+        loadBook,
+        setBooks,
+        setBook,
+        token,
+        user,
+        authenticate,
+        logout,
+      }}
+    >
       {children}
     </BookContext.Provider>
   );

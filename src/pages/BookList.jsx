@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useBooks } from "../context/BookProvider.jsx";
+import { useBooks } from "../context/BookProvider";
 
 export default function BookList() {
   const { books } = useBooks(); // Get books from context

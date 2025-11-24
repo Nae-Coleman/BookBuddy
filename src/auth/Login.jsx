@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { useBooks } from "../context/BookProvider";
 
 const Login = ({ authenticate }) => {
   const navigate = useNavigate();
@@ -8,6 +9,7 @@ const Login = ({ authenticate }) => {
   const login = async (formData) => {
     const email = formData.get("email");
     const password = formData.get("password");
+    const { authenticate } = useBooks();
 
     const user = {
       email,
